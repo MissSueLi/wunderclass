@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :products
+
+  get 'pages/landing_page'
+
+  get 'pages/contact'
+
+  get 'pages/about'
+
+  get 'form_input',   to: 'form_example#form_input'
+  get 'form_output',  to: 'form_example#form_output'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

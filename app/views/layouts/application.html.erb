@@ -3,12 +3,35 @@
 <head>
   <title>Wunderclass</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <%= csrf_meta_tags %>
+<img src="http://localhost:3000/images/bestway.jpg"
 </head>
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 <body>
-
+	<h1>WunderClass</h1>
 <%= yield %>
-
+<nav>
+<ul>
+<!-- <li><a href="/pages/landing_page">Home</a></li> -->
+<li><%= link_to "Home", "/pages/landing_page" %></li>
+<li><a href="/pages/about">About</a></li>
+<li><a href="/pages/contact">Contact</a></li>
+<li><%= link_to 'All Products', products_path %></li>
+</ul>
+</nav>
+<!--flash notification-->
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+ <!--end flash notification-->
 </body>
 </html>

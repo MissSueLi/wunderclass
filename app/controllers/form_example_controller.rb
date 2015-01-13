@@ -7,8 +7,8 @@ class FormExampleController < ApplicationController
 	  @email = params[:email]
 	  @message = params[:message]
 	  render "form_result"
-  	ActionMailer::Base.mail(:from => @email, 
-	  	:to => 'to@domain.com', 
+  	ActionMailer::Base.mail(:from => 'no-reply@example.com', 
+	  	:to => @email, 
 	  	:subject => "A new contact form message", 
 	  	:body => @message).deliver
   end

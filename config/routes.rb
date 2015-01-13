@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+
   resources :products
+
+  resources :users, only: [:edit, :update, :show]
 
   get 'pages/landing_page'
 
@@ -9,7 +13,7 @@ Rails.application.routes.draw do
   get 'pages/about'
 
   get 'form_input',   to: 'form_example#form_input'
-  get 'form_output',  to: 'form_example#form_output'
+  post 'form_output',  to: 'form_example#form_output'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
